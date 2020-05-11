@@ -19,6 +19,10 @@ Currently only three levels of directory support, deeper directory temporarily n
 
 ```text
 
+git clone git@github.com:saiye/mk.git
+
+
+
 在App/CCOntroller/Index
 指定md目录
 Specify md directory
