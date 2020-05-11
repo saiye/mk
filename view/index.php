@@ -20,9 +20,13 @@
 			}
 			.left{
 				float: left;
-				width:8%;
+				width:12%;
 				height: 100%;
                 position:relative;
+                background-color: beige;
+                border-radius:25px;
+                overflow: hidden;
+                text-overflow: ellipsis;
 			}
             .top{
                 width: 100%;
@@ -31,7 +35,7 @@
             }
             .content-view{
                 width: 100%;
-                min-height:1200px;
+                min-height:1600px;
                 height: auto;
                 position:relative;
                 background-color: beige;
@@ -39,21 +43,11 @@
                 border-radius:25px;
             }
 			.content-box{
-				width: 90%;
-				height: 100%;
+				width: 85%;
+				height:auto;
 				float: left;
+                margin-left:2%;
                 position:relative;
-			}
-			.left>ul,li{
-				list-style: none;
-				height: auto;
-				display: block;
-			}
-            .left>ul>li{
-				min-height: 30px;
-				height: auto;
-				text-align:center;
-                margin-top:5px;
 			}
 		</style>
 	</head>
@@ -80,6 +74,15 @@
                                                             <?php foreach($sub2['children'] as $sub3){ ?>
                                                                 <li data-path="<?php echo $sub3['path'];?>"  data-type="<?php echo $sub3['type'];?>">
                                                                     <span class="<?php echo $sub3['type'];?> closed"><?php echo $sub3['title'];?></span>
+                                                                    <?php if(!empty($sub3['children'])){?>
+                                                                        <ul class="filetree treeview-famfamfam">
+                                                                            <?php foreach($sub3['children'] as $sub4){ ?>
+                                                                                <li data-path="<?php echo $sub4['path'];?>"  data-type="<?php echo $sub4['type'];?>">
+                                                                                    <span class="<?php echo $sub4['type'];?> closed"><?php echo $sub4['title'];?></span>
+                                                                                </li>
+                                                                            <?php }?>
+                                                                        </ul>
+                                                                    <?php }?>
                                                                 </li>
                                                             <?php }?>
                                                         </ul>

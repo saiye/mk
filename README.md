@@ -86,4 +86,3 @@ RewriteRule ^ index.php [L]
 
 ## 效果图  effect picture
 ![avatar](https://www.kfcp.cn/1.png)
-![avatar](https://www.kfcp.cn/3.png)
