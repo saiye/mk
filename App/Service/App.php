@@ -26,7 +26,6 @@ class App
     }
     public function  boot(){
         foreach ($this->boostrapClass as $key=>$class){
-            $shot=explode('/',$class);
             $this->app->bind($key, function() use ($class) {
                 return new $class($this->app);
             });
