@@ -1,4 +1,4 @@
-##about mk
+## about mk
 
 ```text
 mk 是基于php+markedjs+jquery-treeview开发，可以在线浏览Markdown文档的工具
@@ -15,7 +15,7 @@ Currently only three levels of directory support, deeper directory temporarily n
 
 ```
 
-##install
+## install
 
 ```text
 
@@ -84,6 +84,6 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.php [L]
 ```
 
-##效果图  effect picture
+## 效果图  effect picture
 ![avatar](https://www.kfcp.cn/1.png)
 ![avatar](https://www.kfcp.cn/3.png)
