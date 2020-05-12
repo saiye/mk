@@ -27,8 +27,12 @@ class Container
             return $this->instances[$abstract];
         }
         array_unshift($parameters, $this);
+
         if(isset($this->binds[$abstract])){
-            return call_user_func_array($this->binds[$abstract], $parameters);
+
+            $this->instances[$abstract]=call_user_func_array($this->binds[$abstract], $parameters);
+
+            return $this->instances[$abstract];
         }
         throw new \Exception('不存在类'.$abstract);
     }

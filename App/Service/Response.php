@@ -28,11 +28,12 @@ class Response
 
     public function json($data)
     {
-       return  $this->data(json_encode($data))->contentType('content-type:application/json;charset=utf-8');
+        return $this->data(json_encode($data))->contentType('content-type:application/json;charset=utf-8');
     }
 
-    private function contentType($type){
-        $this->contentType=$type;
+    private function contentType($type)
+    {
+        $this->contentType = $type;
         return $this;
     }
 

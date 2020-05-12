@@ -10,18 +10,21 @@ namespace App\Service;
 class Request
 {
 
-    private  $app=null;
+    private $app = null;
 
-    public  function __construct($app)
+    public function __construct($app)
     {
-        $this->app=$app;
+        $this->app = $app;
     }
 
-    public  function get($key,$default=''){
-       return isset($_GET[$key])?$_GET[$key]:$default;
+    public function get($key, $default = '')
+    {
+        return isset($_GET[$key]) ? $_GET[$key] : $default;
     }
-    public function  post($key,$default=''){
-        return isset($_POST[$key])?$_POST[$key]:$default;
+
+    public function post($key, $default = '')
+    {
+        return isset($_POST[$key]) ? $_POST[$key] : $default;
     }
 
 }

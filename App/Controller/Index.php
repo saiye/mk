@@ -15,7 +15,7 @@ class Index extends BaseController
 
     public function index()
     {
-       // $dir = '/mnt/web/opt';
+       // $dir = '/mnt/web/manage';
         $dir = BasePath;
         $list = $this->readDirList(static::$list, $dir);
         $data = compact('list');
