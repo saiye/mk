@@ -47,14 +47,12 @@ class App
 
         $reponse = $router->distribute($uri, $param = []);
 
-        if (is_string($reponse)) {
+        if (!empty($reponse) and is_string($reponse)) {
             echo $reponse;
             return;
         }
-
         if ($reponse instanceof Response) {
             return $reponse->send();
         }
-        echo '---empty--view--';
     }
 }

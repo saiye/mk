@@ -10,4 +10,7 @@ $this->route('/','\\App\\Controller\\Index@index');
 $this->route('/data/list','\\App\\Controller\\Data@listData');
 
 
+$this->route('/img/show','\\App\\Controller\\Img@show');
+
+
 

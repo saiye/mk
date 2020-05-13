@@ -31,7 +31,7 @@ class Response
         return $this->data(json_encode($data))->contentType('content-type:application/json;charset=utf-8');
     }
 
-    private function contentType($type)
+    public function contentType($type)
     {
         $this->contentType = $type;
         return $this;
@@ -45,7 +45,9 @@ class Response
 
     public function send()
     {
-        header($this->contentType);
-        echo $this->message;
+        if($this->message){
+            header($this->contentType);
+            echo $this->message;
+        }
     }
 }
