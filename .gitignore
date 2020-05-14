@@ -5,3 +5,5 @@
 .idea/
 .git/
 vendor/
+*.log
+storage/session/
