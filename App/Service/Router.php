@@ -7,12 +7,37 @@
 namespace App\Service;
 
 
-class Router
+class Router implements Handler
 {
     private static $routesClosure = [];
     private static $routesString = [];
 
     private $app = null;
+
+    public function handler()
+    {
+        $this->register();
+
+        $uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '/';
+
+        if(strpos($uri,'?'))
+            $uri=substr($uri,0,strpos($uri,'?'));
+
+        $reponse = $this->distribute($uri, $param = []);
+        if ($reponse instanceof Response) {
+            return $reponse->send();
+        }
+        if (!empty($reponse)) {
+            if(is_array($reponse)){
+                $reponse=json_encode($reponse);
+            }
+            if(is_object($reponse)){
+                $reponse=json_encode($reponse);
+            }
+            echo $reponse;
+            return;
+        }
+    }
 
     public function __construct($app)
     {
@@ -21,7 +46,6 @@ class Router
 
     public function route($uri, $concrete)
     {
-
         if ($concrete instanceof \Closure) {
             static::$routesClosure[$uri] = $concrete;
         } else {
@@ -34,7 +58,6 @@ class Router
      */
     public function distribute($uri, $param = [])
     {
-
         if (isset(static::$routesClosure[$uri])) {
 
             return call_user_func_array(static::routesClosure[$uri], $param);
@@ -54,6 +77,6 @@ class Router
      */
     public function register()
     {
-        include BasePath . DIRECTORY_SEPARATOR . 'route.php';
+        include BASE_PATH . DIRECTORY_SEPARATOR . 'route.php';
     }
 }

@@ -8,8 +8,9 @@
 
 namespace App\Controller;
 use App\Lib\Image;
+use App\Service\BaseController;
 
-class Img
+class Img  extends BaseController
 {
 
     public function  upload(){

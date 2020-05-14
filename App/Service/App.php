@@ -14,6 +14,16 @@ class App
         'router' => Router::class,
         'response' => Response::class,
         'request' => Request::class,
+        'session' => Session::class,
+        'config' => Config::class,
+        'cache' => Cache::class,
+        'exception_handler' => ExceptionHandler::class,
+    ];
+    private $handlers = [
+        'exception_handler',
+        'session',
+        'router',
+        'cache',
     ];
 
     public function __construct()
@@ -38,21 +48,8 @@ class App
 
     public function handler()
     {
-
-        $router = $this->app->make('router');
-
-        $router->register();
-
-        $uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '/';
-
-        $reponse = $router->distribute($uri, $param = []);
-
-        if (!empty($reponse) and is_string($reponse)) {
-            echo $reponse;
-            return;
-        }
-        if ($reponse instanceof Response) {
-            return $reponse->send();
+        foreach ($this->handlers as $key) {
+           $this->app->make($key)->handler();
         }
     }
 }

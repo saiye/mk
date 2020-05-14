@@ -36,4 +36,15 @@ class Container
         }
         throw new \Exception('不存在类'.$abstract);
     }
+
+    /**
+     * 反射机制新建类
+     * @param $className
+     * @return mixed
+     */
+    public function ioc($className){
+       $obj=new $className();
+
+        return $obj;
+    }
 }
