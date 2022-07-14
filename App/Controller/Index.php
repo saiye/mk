@@ -34,12 +34,12 @@ class Index extends BaseController
                             $path = $dir . DIRECTORY_SEPARATOR . $fileName;
                             $type = filetype($path);
                             $item = [];
-                            array_push($list, [
-                                'path' => $path,
-                                'type' => $type=='dir'?'folder':'file',
-                                'title' => $fileName,
-                                'children' =>$this->readDirList($item,$path),
-                            ]);
+                            $list[] = [
+                                'path'     => $path,
+                                'type'     => $type == 'dir' ? 'folder' : 'file',
+                                'title'    => $fileName,
+                                'children' => $this->readDirList($item, $path),
+                            ];
                         }
                     }
                     closedir($dh);
